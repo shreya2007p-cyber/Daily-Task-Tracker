@@ -1,0 +1,12 @@
+{
+  "name": "daily-task-tracker",
+  "version": "1.0.0",
+  "description": "A simple Electron desktop task tracker",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "YOUR_INSTALLED_VERSION"
+  }
+}
