@@ -113,13 +113,123 @@
       .input-row { flex-wrap: wrap; }
       .input-row input { flex-basis: 100%; }
     }
+
+    
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.filters {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: #edf0f7;
+  color: #424b63;
+}
+
+.filter-btn.active {
+  background: #4f46e5;
+  color: white;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #4f46e5;
+  outline-offset: 3px;
+}
+
+@media (max-width: 450px) {
+  .toolbar {
+    align-items: flex-start;
+  }
+}
+
+
+html[data-theme="dark"] body {
+  background: #141824;
+  color: #edf0fa;
+}
+
+html[data-theme="dark"] .container {
+  background: #202638;
+  color: #edf0fa;
+  box-shadow: 0 8px 30px #00000030;
+}
+
+html[data-theme="dark"] h1 {
+  color: #edf0fa;
+}
+
+html[data-theme="dark"] .subtitle,
+html[data-theme="dark"] .stats {
+  color: #b7bfd4;
+}
+
+html[data-theme="dark"] input {
+  background: #171d2b;
+  color: #edf0fa;
+  border-color: #434c64;
+}
+
+html[data-theme="dark"] .filter-btn {
+  background: #343d53;
+  color: #edf0fa;
+}
+
+html[data-theme="dark"] .filter-btn.active {
+  background: #6558ef;
+  color: white;
+}
+
+html[data-theme="dark"] .task {
+  border-bottom-color: #394157;
+}
+
+html[data-theme="dark"] .completed {
+  color: #9ca6be;
+}
+
+html[data-theme="dark"] .delete-btn {
+  background: #482c39;
+  color: #ffb8c4;
+}
+
+html[data-theme="dark"] #emptyMessage {
+  color: #b7bfd4;
+}
+
+html[data-theme="dark"] .track {
+  background: #394157;
+}
+
+html[data-theme="dark"] #status {
+  color: #ffb8b8;
+}
+
   </style>
 </head>
 
 <body>
   <main class="container">
+    
+<div class="heading-row">
+  <div>
     <h1>Daily Task Tracker</h1>
     <p class="subtitle">Small steps. Real progress.</p>
+  </div>
+  <button type="button" id="themeToggle" class="filter-btn">
+    🌙 Dark Mode
+  </button>
+</div>
+
 
     <form id="taskForm" class="input-row">
       <input
@@ -132,6 +242,21 @@
       >
       <button class="add-btn" type="submit">+ Add Task</button>
     </form>
+
+    
+<div class="toolbar">
+  <div class="filters">
+    <button type="button" class="filter-btn active" data-filter="all">All</button>
+    <button type="button" class="filter-btn" data-filter="pending">Pending</button>
+    <button type="button" class="filter-btn" data-filter="completed">Completed</button>
+  </div>
+
+  <button type="button" id="clearCompleted" class="delete-btn">
+    Clear Completed
+  </button>
+</div>
+
+
 
     <div class="stats">
       <span id="taskCount">0 tasks</span>
